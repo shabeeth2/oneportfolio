@@ -1,0 +1,174 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Martin Mono';
+  src: local('Martin Mono'), local('MartinMono'),
+       url('/fonts/MartinMono.woff2') format('woff2'),
+       url('/fonts/MartinMono.woff') format('woff');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Parabole';
+  src: local('Parabole'), local('Parabole Display'), local('Parabole Bold'),
+       url('/fonts/Parabole.woff2') format('woff2'),
+       url('/fonts/Parabole.woff') format('woff');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+:root {
+  --font-martin: 'Martin Mono', 'MartinMono', 'Space Mono', 'JetBrains Mono', 'DM Mono', monospace, ui-monospace;
+  --font-parabole: 'Parabole', 'Parabole Display', 'Syne', 'Cinzel Decorative', sans-serif;
+  --font-forma: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif;
+}
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    background-color: #0C0C0C;
+    color: #D7E2EA;
+    font-family: var(--font-forma);
+    scroll-behavior: smooth;
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: #0C0C0C;
+    color: #D7E2EA;
+    font-family: var(--font-forma);
+    min-height: 100vh;
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  #root {
+    background-color: #0C0C0C;
+    min-height: 100vh;
+    overflow-x: clip;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* Typography Classes */
+.font-martin {
+  font-family: var(--font-martin);
+}
+
+.font-parabole {
+  font-family: var(--font-parabole);
+}
+
+.font-forma {
+  font-family: var(--font-forma);
+}
+
+.font-lust {
+  font-family: var(--font-parabole);
+}
+
+/* Optical Kerning & Tracking per Apple Human Interface Guidelines */
+.tracking-display {
+  letter-spacing: -0.03em;
+}
+
+.tracking-title {
+  letter-spacing: -0.018em;
+}
+
+.tracking-micro {
+  letter-spacing: 0.075em;
+}
+
+/* Apple Design System Glass & Materials */
+.apple-glass {
+  background: rgba(12, 12, 12, 0.78);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.45);
+}
+
+.apple-glass-card {
+  background: rgba(18, 20, 24, 0.72);
+  backdrop-filter: blur(20px) saturate(170%);
+  -webkit-backdrop-filter: blur(20px) saturate(170%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* Immediate tactile response on pointer-down (Apple responsiveness) */
+.apple-press {
+  transition: transform 90ms cubic-bezier(0.2, 0, 0, 1), opacity 90ms ease;
+  will-change: transform;
+}
+.apple-press:active {
+  transform: scale(0.975);
+}
+
+/* Hero Display Gradient with high-contrast metallic lustre */
+.hero-heading {
+  background: linear-gradient(180deg, #FFFFFF 0%, #E3ECF3 45%, #8B9AAA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+@keyframes gradientShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-reveal-name {
+  background: linear-gradient(
+    115deg,
+    #71717A 0%,
+    #FFFFFF 25%,
+    #D4D4D8 45%,
+    #FFFFFF 65%,
+    #52525B 85%,
+    #FFFFFF 100%
+  );
+  background-size: 260% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  animation: gradientShimmer 5s ease-in-out infinite;
+}
+
+/* Custom scrollbar for modern dark feel */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #0C0C0C;
+}
+::-webkit-scrollbar-thumb {
+  background: #25282F;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3B404B;
+}

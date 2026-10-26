@@ -1,0 +1,24 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Netlify function rewrite for /api/chat
+[[redirects]]
+  from = "/api/chat"
+  to = "/.netlify/functions/chat"
+  status = 200
+
+# Fallback for all other API endpoints
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+# Single Page Application (SPA) client routing fallback
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
